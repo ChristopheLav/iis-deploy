@@ -22,11 +22,16 @@ Also, some generic directories and files are excluded to prevent data loose:
 )}
 ```
 
+## Requirements
+
+- A Windows runner
+- A runner with Web Deploy 3.0+ (more information [here](https://www.iis.net/downloads/microsoft/web-deploy) and [here](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/dd568996(v=ws.10)))
+
 ## What's new
 
 Refer [here](CHANGELOG.md) to the changelog.
 
-### Inputs
+## Inputs
 
 It is recommended to put the `msdeploy-username` and `msdeploy-password` into a GitHub secrets to prevent clear value in your workflow.
 
