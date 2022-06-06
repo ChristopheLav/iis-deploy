@@ -1,0 +1,33 @@
+name: 'IIS Deploy'
+description: 'Allows to deploy a website on IIS'
+inputs:
+  website-name:
+    description: "IIS website name"
+    required: true
+  msdeploy-service-url:
+    description: "MS Deploy Service URL"
+    required: true
+  msdeploy-username:
+    description: "Username used by Basic authentication to the MS Deploy Service"
+    required: true
+  msdeploy-password:
+    description: "Password used by Basic authentication to the MS Deploy Service"
+    required: true
+  source-path:
+    description: "The path to the source directory that will be deployed"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Deploy Application ${{ inputs.website-name }} on IIS
+      shell: pwsh
+      run: >
+        ${{ github.action_path }}/scripts/PublishAspNet5Website.ps1
+        ${{ inputs.source-path }}
+        ${{ inputs.msdeploy-service-url }}
+        ${{ inputs.website-name }}
+        ${{ inputs.msdeploy-username }}
+        ${{ inputs.msdeploy-password }}
+branding:
+  icon: upload-cloud
+  color: purple
