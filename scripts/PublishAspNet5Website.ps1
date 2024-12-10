@@ -15,7 +15,10 @@ param(
 	[string]$deployUserName,
 	
 	[Parameter(Mandatory=$true)]
-	[string]$deployUserPassword
+	[string]$deployUserPassword,
+
+	[Parameter(Mandatory=$false)]
+	[bool]$skipExtraFilesOnServer = $false
 )
 
 Write-Host "Deployment starting..."
@@ -25,7 +28,7 @@ $publishProperties = @{'WebPublishMethod'='MSDeploy';
                         'DeployIisAppPath'=$websiteName;
                         'Username'=$deployUserName;
                         'Password'=$deployUserPassword;
-						'SkipExtraFilesOnServer'=$false;
+						'SkipExtraFilesOnServer'=$skipExtraFilesOnServer;
 						'EnableMSDeployAppOffline'=$true;
 						'ExcludeFiles'=@(
 							@{'objectname'='filePath';'absolutepath'='.*google.*\.html'},

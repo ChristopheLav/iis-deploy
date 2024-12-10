@@ -42,6 +42,7 @@ It is recommended to put the `msdeploy-username` and `msdeploy-password` into a 
 | `msdeploy-username`     | Yes | `username`        | | Username used by Basic authentication to the MS Deploy Service |
 | `msdeploy-password`     | Yes | `password`        | | Password used by Basic authentication to the MS Deploy Service |
 | `source-path`           | Yes | `${{ github.workspace }}\website\publish`  | | The path to the source directory that will be deployed |
+| `skip-extra-files`      | No  | `true`  | `false` | Keep existing directories/files during deployment |
 
 ## Usage
 
@@ -54,6 +55,7 @@ It is recommended to put the `msdeploy-username` and `msdeploy-password` into a 
     msdeploy-username: ${{ secrets.MSDEPLOY_USERNAME }}
     msdeploy-password: ${{ secrets.MSDEPLOY_PASSWORD }}
     source-path: ${{ github.workspace }}\website\publish
+    skip-extra-files: false
 ```
 <!-- end usage -->
 
