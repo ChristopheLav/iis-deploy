@@ -1,0 +1,7 @@
+* @ChristopheLav
+
+# to protect all GitHub configuration including workflows
+/.github/ @ChristopheLav
+
+# to protect the code owners configuration itself
+/.github/CODEOWNERS @ChristopheLav
