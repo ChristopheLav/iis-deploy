@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.2 (2025-08-07)
+## v1.1.1 (2025-08-07)
 
 Fix type conversion issue with parameter `SkipExtraFilesOnServer`
 
