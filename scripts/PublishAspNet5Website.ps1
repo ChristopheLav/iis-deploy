@@ -18,16 +18,21 @@ param(
 	[string]$deployUserPassword,
 
 	[Parameter(Mandatory=$false)]
-	[bool]$skipExtraFilesOnServer = $false
+	$skipExtraFilesOnServer = $false
 )
 
 Write-Host "Deployment starting..."
 
+# explicitly convert the parameter to boolean if received as a string (GitHub Actions/YAML case)
+if ($skipExtraFilesOnServer -is [string]) {
+	$skipExtraFilesOnServer = [System.Convert]::ToBoolean($skipExtraFilesOnServer)
+}
+
 $publishProperties = @{'WebPublishMethod'='MSDeploy';
-                        'MSDeployServiceUrl'=$deployUrl;
-                        'DeployIisAppPath'=$websiteName;
-                        'Username'=$deployUserName;
-                        'Password'=$deployUserPassword;
+						'MSDeployServiceUrl'=$deployUrl;
+						'DeployIisAppPath'=$websiteName;
+						'Username'=$deployUserName;
+						'Password'=$deployUserPassword;
 						'SkipExtraFilesOnServer'=$skipExtraFilesOnServer;
 						'EnableMSDeployAppOffline'=$true;
 						'ExcludeFiles'=@(
